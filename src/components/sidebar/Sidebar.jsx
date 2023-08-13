@@ -7,10 +7,11 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import EventIcon from '@mui/icons-material/Event';
-import SchoolIcon from '@mui/icons-material/School';
-
+import{Users} from '../../dummyData'
+import Friend from '../friend/Friend';
 
 export default function Sidebar() {
+  let Users2=Users.filter((u)=>{return u.id!==1})
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -47,30 +48,13 @@ export default function Sidebar() {
             <EventIcon className="sidebarIcon" />
             <span className="sidebarListItemText">Events</span>
           </li>
-          <li className="sidebarListItem">
-            <SchoolIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Courses</span>
-          </li>
         </ul>
         <button className="sidebarButton">Show More</button>
         <hr className='sidebarHr'/>
         <ul className="sidebarFriendList">
-          <li className="sidebarFriend">
-            <img className='sidebarFriendImg'src="/assets/person/3.jpeg" alt="" />
-            <span className="sidebarFriendName">Jane</span>
-          </li>
-          <li className="sidebarFriend">
-            <img className='sidebarFriendImg'src="/assets/person/4.jpeg" alt="" />
-            <span className="sidebarFriendName">Huan</span>
-          </li>
-          <li className="sidebarFriend">
-            <img className='sidebarFriendImg'src="/assets/person/5.jpeg" alt="" />
-            <span className="sidebarFriendName">Nora</span>
-          </li>
-          <li className="sidebarFriend">
-            <img className='sidebarFriendImg'src="/assets/person/6.jpeg" alt="" />
-            <span className="sidebarFriendName">Spake</span>
-          </li>
+        {Users2.map(u=>(
+        <Friend key={Users2.id} user={u}/>
+       ))}
         </ul>
         </div>
         </div>

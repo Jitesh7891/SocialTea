@@ -2,8 +2,10 @@
     flex:3;
     /* 8vh is height of topbar */
     height: calc(100vh - 8vh);
-    /* background-color: yellowgreen; */
+
     overflow-y: scroll;
+    position: sticky;
+    top:8vh;
 }
 
 ::-webkit-scrollbar{
