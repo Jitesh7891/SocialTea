@@ -16,7 +16,7 @@ export default function Register() {
                     <input placeholder="Confirm Password" className="loginInput"></input>
                     <button className="loginButton">Sign Up</button>
 
-                    <button className="loginregisterButton">Log into Account</button>
+                    <button className="loginregisterButton">Create a New Account</button>
                 </div>
             </div>
         </div>

@@ -86,6 +86,7 @@
     border-radius: 25;
     display:flex;
     align-items: center;
+    border-radius: 30px;
 }
 .searchIcon{
     font-size: 1.7rem !important;
@@ -93,8 +94,8 @@
 }
 .searchInput{
     border: none;
-    width:38%;
-    font-size: 1.1rem;;
+    width:88%;
+    font-size: 15px;;
 }
 .searchInput:focus{
     outline: none;

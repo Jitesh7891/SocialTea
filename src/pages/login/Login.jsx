@@ -1,6 +1,6 @@
-import './register.css'
+import './login.css'
 
-export default function Register() {
+export default function Login() {
   return (
     <div className='login'>
         <div className="loginWrapper">
@@ -9,14 +9,12 @@ export default function Register() {
                 <span className="logindesc">Connect with your friends with SocialTea </span>
             </div>
             <div className="loginRight">
-                <div className="registerBox">
-                    <input placeholder="Username" className="loginInput"></input>
+                <div className="loginBox">
                     <input placeholder="Email" className="loginInput"></input>
                     <input placeholder="Password" className="loginInput"></input>
-                    <input placeholder="Confirm Password" className="loginInput"></input>
-                    <button className="loginButton">Sign Up</button>
-
-                    <button className="loginregisterButton">Log into Account</button>
+                    <button className="loginButton">Log In</button>
+                    <span className="loginForgot">Forgot Password?</span>
+                    <button className="loginregisterButton">Create a New Account</button>
                 </div>
             </div>
         </div>
@@ -25,3 +23,4 @@ export default function Register() {
     </div>
   )
 }
+

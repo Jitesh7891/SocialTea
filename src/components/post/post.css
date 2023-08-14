@@ -33,6 +33,7 @@ justify-content: space-between;
 .postUsername{
     margin: 0px 10px;
     font-size: 1rem;
+    font-weight: 500;
 }
 
 .postDate{

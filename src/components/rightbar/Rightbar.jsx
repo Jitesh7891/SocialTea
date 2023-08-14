@@ -19,7 +19,7 @@ export default function Rightbar({profile}) {
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
        {Users2.map(u=>(
-        <Online key={Users.id} user={u}/>
+        <Online key={Users2.id} user={u}/>
        ))}
      
         </ul>
@@ -30,8 +30,8 @@ export default function Rightbar({profile}) {
   const ProfileRightBar=()=>{
     return(
       <>
-      <div className="rightbarInfo">
       <h4 className="rightbarTitle">User Information</h4>
+      <div className="rightbarInfo">
         <div className="rightbarInfoItem">
           <span className="rightbarInfoKey">City:</span>
           <span className="rightbarInfoValue">New York</span>
@@ -45,7 +45,7 @@ export default function Rightbar({profile}) {
           <span className="rightbarInfoValue">Single</span>
         </div>
       </div>
-<h4 className="rightbarTitle">User Friends</h4>
+<h4 className="rightbarTitle2">User Friends</h4>
 <div className="rightbarFollowings">
   <div className="rightbarFollowing">
     <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
@@ -72,6 +72,12 @@ export default function Rightbar({profile}) {
     <span className="rightbarFollowingName">
       John Carter</span>
   </div>
+  <div className="rightbarFollowing">
+    <img src="assets/person/6.jpeg" alt="" className="rightbarFollowingImg" />
+    <span className="rightbarFollowingName">
+      John Carter</span>
+  </div>
+  
 </div>
       </>
     )

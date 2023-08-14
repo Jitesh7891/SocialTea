@@ -2,10 +2,19 @@
     flex:3;
     /* 8vh is height of topbar */
     height: calc(100vh - 8vh);
-
+    font-size: 12px;
     overflow-y: scroll;
     position: sticky;
     top:8vh;
+}
+
+.sidebarListItemText{
+font-weight: 600!important;
+}
+
+.sidebarFriendName{
+    font-weight: 600!important;
+
 }
 
 ::-webkit-scrollbar{
