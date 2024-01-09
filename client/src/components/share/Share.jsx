@@ -33,7 +33,7 @@ export default function Share() {
       newPost.image = fileName;
 
       try{
-        await axios.post("/upload",data);
+        await axios.post("https://socialtea-backend.onrender.com/api/upload",data);
       }catch(err){
         //console.log(err)
       }

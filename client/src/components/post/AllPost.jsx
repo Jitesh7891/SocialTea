@@ -8,7 +8,7 @@ export default function AllPosts() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('/posts/all'); // Replace with your backend endpoint to get all posts
+        const response = await axios.get('https://socialtea-backend.onrender.com/api/posts/all'); // Replace with your backend endpoint to get all posts
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);

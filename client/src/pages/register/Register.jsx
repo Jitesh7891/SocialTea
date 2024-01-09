@@ -30,7 +30,7 @@ export default function Register() {
                 password:password.current.value,
             }
             try{
-            await axios.post("/auth/register",user);
+            await axios.post("https://socialtea-backend.onrender.com/api/auth/register",user);
             navigate("/")
             }catch(error){
                 setError(true)
