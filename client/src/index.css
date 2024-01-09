@@ -1,0 +1,12 @@
+body {
+  overflow-x: hidden !important;
+  width: 100vw !important;
+  margin: 0 !important;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    padding: 0;
+}
