@@ -20,7 +20,7 @@ export default function Feed({username}) {
     const gettimeline=async()=>{
       let res;
     if(location.pathname==="/"){ 
-      res=await axios.get("/posts/all")
+      res=await axios.get("https://socialtea-backend.onrender.com/api/posts/all")
     }
     else{
       res=username?await axios.get("https://socialtea-backend.onrender.com/api/posts/profile/"+username):await axios.get("https://socialtea-backend.onrender.com/api/posts/timeline/"+user._id)
