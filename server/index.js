@@ -25,7 +25,7 @@ app.use("/images",express.static(path.join(__dirname,"public/images")));
 
 // Use the cors middleware with specific origin(s)
 const corsOptions = {
-    origin: 'https://social-tea.vercel.app/',
+    origin: 'https://social-tea.vercel.app',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   };
 
