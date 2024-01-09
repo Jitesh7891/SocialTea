@@ -7,11 +7,11 @@ import { loginCall } from '../../apiCalls'
 export default function Login() {
 
     const navigate = useNavigate();
-    // useEffect(()=>{
-    //     if(localStorage.getItem("user")){
-    //         navigate("/")
-    //     }
-    // },[localStorage.getItem("user")])
+    useEffect(()=>{
+        if(localStorage.getItem("user")){
+            navigate("/")
+        }
+    },[localStorage.getItem("user")])
 
     const email = useRef();
     const password = useRef();
@@ -25,9 +25,9 @@ export default function Login() {
     const { isFetching, dispatch } = useContext(AuthContext);
 
     const handleClick =async (e) => {
-        // if (localStorage.getItem("user")) {
-        //     navigate("/")
-        // }
+        if (localStorage.getItem("user")) {
+            navigate("/")
+        }
         e.preventDefault()
       
        const response=loginCall({ email: email.current.value, password: password.current.value }, dispatch);
