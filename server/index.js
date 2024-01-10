@@ -18,7 +18,7 @@ app.listen(port, () => {
 
 //middleware
 app.use(express.json())
-// app.use(morgan("common"))
+app.use(morgan("common"))
 
 //serve static files
 app.use("/images",express.static(path.join(__dirname,"public/images")));

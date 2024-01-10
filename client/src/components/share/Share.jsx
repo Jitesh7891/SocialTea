@@ -7,13 +7,27 @@ import './share.css'
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios';
 import CancelIcon from '@mui/icons-material/Cancel';
+import EmojiPicker from 'emoji-picker-react';
 
 export default function Share() {
+
+  const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
+
+  const handleEmojiButtonClick = () => {
+    setEmojiPickerVisible(!isEmojiPickerVisible);
+  };
+
+  const handleEmojiSelect = (emoji) => {
+    // Handle the selected emoji, if needed
+    console.log('Selected Emoji:', emoji);
+  };
+
+
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const { user } = useContext(AuthContext);
 
-  const desc = useRef();
+  const desc = useRef('');
 
   const [file, setFile] = useState(null);
 
@@ -34,16 +48,17 @@ export default function Share() {
 
       try{
         await axios.post("https://socialtea-backend.onrender.com/api/upload",data);
+        // await axios.post("https://localhost:8800/api/upload",data);
       }catch(err){
         //console.log(err)
       }
 
     }
     try{
-      axios.post("/posts/add",newPost)
-      window.location.reload();
+      axios.post("https://socialtea-backend.onrender.com/api/posts/add",newPost)
+      // window.location.reload();
     }catch(err){
-      //console.log(err)
+      console.log(err)
     }
   }
 
@@ -93,7 +108,19 @@ export default function Share() {
           </div>
           <div className="shareOption">
             <EmojiEmotionsIcon style={{ color: 'goldenrod' }} className='shareIcon' />
-            <div className="shareOptionText"><span className="shareOptiontext">Emotions</span></div>
+            <div className="shareOptionText" onClick={handleEmojiButtonClick}><span className="shareOptiontext">Emotions
+            </span></div>
+            {isEmojiPickerVisible && (
+            <EmojiPicker 
+            onSelect={handleEmojiSelect} 
+            categories={['smileys_people','food_drink','travel_places']}
+            style={{height:"60vh",width:'20vw',position:'absolute',top:"35vh"}}
+            onEmojiClick={(emojiObject)=>{desc.current.value=desc.current.value+emojiObject.emoji
+
+            }}
+            
+            />
+            )}
           </div>
           <button className="shareButton" type='submit' >Share</button>
         </div>
