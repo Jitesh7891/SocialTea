@@ -40,7 +40,7 @@ export default function Share() {
 
     }
     try{
-      axios.post("/posts/add",newPost)
+      axios.post("https://socialtea-backend.onrender.com/api/posts/add",newPost)
       window.location.reload();
     }catch(err){
       //console.log(err)
