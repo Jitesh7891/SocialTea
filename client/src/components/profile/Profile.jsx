@@ -33,8 +33,8 @@ export default function Profile() {
                         <div className="profileRightTop">
                             <div className="profileCover">
 
-                            <img src={!user.coverPicture===' '||!user?user.coverPicture:PF+"/nature.avif"} alt="" className="profileCoverImg" />
-                            <img src={!user.profilePicture===' '||!user?user.profilePicture:PF+"/avatar.jpg"} alt="" className="profileUserImg" />
+                            <img src={user.coverPicture!==' '&&user?PF+user.coverPicture:PF+"nature.avif"} alt="" className="profileCoverImg" />
+                            <img src={user.profilePicture!==''&&user?PF+user.profilePicture:PF+"avatar.jpg"} alt="" className="profileUserImg" />
                             </div>
                             <div className="profileInfo">
                                 <h4 className="profileInfoName">{user.username}</h4>

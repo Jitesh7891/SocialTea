@@ -32,12 +32,12 @@ export default function Rightbar({ user }) {
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put(`https://socialtea-backend.onrender.com/api/users/${user._id}/unfollow`, {
+        await axios.put(`https://socialtea-backend.onrender.com/api/users/unfollow/${user._id}`, {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`https://socialtea-backend.onrender.com/api/users/${user._id}/follow`, {
+        await axios.put(`https://socialtea-backend.onrender.com/api/users/follow/${user._id}`, {
           userId: currentUser._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });
@@ -71,7 +71,7 @@ export default function Rightbar({ user }) {
     return (
       <>
         {user.username !== currentUser.username && (
-          <button className="rightbarFollowButton" onClick={handleClick}>
+          <button className="rightbarFollowButton" onClick={handleClick} >
             {followed ? "Unfollow" : "Follow"}
             {followed ? <Remove /> : <Add />}
           </button>
@@ -89,7 +89,7 @@ export default function Rightbar({ user }) {
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
             <span className="rightbarInfoValue">
-              {user.relationship === 1
+              {user.relationship === 0
                 ? "Single"
                 : user.relationship === 1
                 ? "Married"
@@ -97,8 +97,9 @@ export default function Rightbar({ user }) {
             </span>
           </div>
         </div>
-        {/* <h4 className="rightbarTitle">User friends</h4> */}
-        <div className="rightbarFollowings">
+        <h4 className="rightbarTitle">User friends</h4>
+        {user.username === currentUser.username && 
+         <div className="rightbarFollowings">
           {friends.map((friend) => (
             <Link
               to={"/profile/" + friend.username}
@@ -109,7 +110,7 @@ export default function Rightbar({ user }) {
                   src={
                     friend.profilePicture
                       ? PF + friend.profilePicture
-                      : PF + "person/noAvatar.png"
+                      : PF + "avatar.jpg"
                   }
                   alt=""
                   className="rightbarFollowingImg"
@@ -118,7 +119,7 @@ export default function Rightbar({ user }) {
               </div>
             </Link>
           ))}
-        </div>
+        </div> }
       </>
     );
   };

@@ -33,6 +33,8 @@ export default function Share() {
 
   const submithandler=async(e)=>{
     e.preventDefault();
+    
+    if(desc.current.value===''&&!file)return;
 
     const newPost={
       userId:user._id,
@@ -56,7 +58,7 @@ export default function Share() {
     }
     try{
       axios.post("https://socialtea-backend.onrender.com/api/posts/add",newPost)
-      // window.location.reload();
+      window.location.reload();
     }catch(err){
       console.log(err)
     }
@@ -99,11 +101,7 @@ export default function Share() {
             </input>
           </label>
           <div className="shareOption">
-            <LabelIcon style={{ color: 'blue' }} className='shareIcon' />
-            <div className="shareOptionText"><span className="shareOptiontext">Label</span></div>
-          </div>
-          <div className="shareOption">
-            <RoomIcon style={{ color: 'green' }} className='shareIcon' />
+            <RoomIcon style={{ color: 'blue' }} className='shareIcon' />
             <div className="shareOptionText"><span className="shareOptiontext">Location</span></div>
           </div>
           <div className="shareOption">
@@ -111,15 +109,17 @@ export default function Share() {
             <div className="shareOptionText" onClick={handleEmojiButtonClick}><span className="shareOptiontext">Emotions
             </span></div>
             {isEmojiPickerVisible && (
+              <div style={{position:"absolute"}}>
             <EmojiPicker 
             onSelect={handleEmojiSelect} 
             categories={['smileys_people','food_drink','travel_places']}
-            style={{height:"60vh",width:'20vw',position:'absolute',top:"35vh"}}
+            style={{height:"60vh",width:'20vw',position:'absolute',top:"2vh"}}
             onEmojiClick={(emojiObject)=>{desc.current.value=desc.current.value+emojiObject.emoji
 
             }}
             
             />
+            </div>
             )}
           </div>
           <button className="shareButton" type='submit' >Share</button>
