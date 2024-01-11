@@ -24,7 +24,7 @@ app.use(morgan("common"))
 app.use("/images",express.static(path.join(__dirname,"public/images")));
 
 const corsOptions = {
-    origin: 'https://social-tea.vercel.app',
+    origin: ['https://social-tea.vercel.app','https://socialtea.onrender.com'],
     methods: 'GET,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
     optionsSuccessStatus: 200,
   };
