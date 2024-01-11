@@ -23,13 +23,13 @@ app.use(morgan("common"))
 //serve static files
 app.use("/images",express.static(path.join(__dirname,"public/images")));
 
-// Use the cors middleware with specific origin(s)
-// const corsOptions = {
-//     origin: 'https://social-tea.vercel.app',
-//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-//   };
+const corsOptions = {
+    origin: 'https://social-tea.vercel.app',
+    methods: 'GET,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
+    optionsSuccessStatus: 200,
+  };
 
-  app.use(cors());
+  app.use(cors(corsOptions));
 
 
 async function connectToMongoose() {
