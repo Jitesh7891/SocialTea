@@ -13,7 +13,7 @@ function App() {
   const { user } = useContext(AuthContext);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/client">
       <div className="container">
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
