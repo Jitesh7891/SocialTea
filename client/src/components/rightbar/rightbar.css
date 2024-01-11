@@ -25,7 +25,9 @@ align-items: center;
 .rightbarAd{
     width: 100%;
     border-radius: 12px;
+    height: 150px;
     margin: 30px 0;
+    object-fit: cover;
 }
 
 
@@ -84,10 +86,10 @@ align-items: center;
 }
 
 .rightbarFollowingImg{
-    width: 100px;
-    height: 100px;
+    width: 5.7rem;
+    height: 5.7rem;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: 5px;
 }
 
 .rightbarInfo{
@@ -113,7 +115,7 @@ align-items: center;
 .rightbarFollowings{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     
 }
 .rightbarFollowing{
@@ -126,11 +128,11 @@ align-items: center;
 
 .rightbarFollowingName{
     font-size: 14px;
+    text-align: center;
 }
 
 .rightbarFollowButton{
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 30px;
     border: none;
     background-color: #1872f2;
     color: white;

@@ -85,10 +85,12 @@ const Topbar = () => {
             <div>
             <Link to={`/profile/${user.username}`}>
                 <img 
-                src={!(user.profilePicture!==undefined||user.profilePicture!=="")?
-                    PF+user.profilePicture:PF+"/avatar.jpg"}
+                src={(user.profilePicture!==undefined||user.profilePicture!=="")?
+                    PF+user.profilePicture:PF+"avatar.jpg"}
                      alt="" className='topbarImage' />
+                     {console.log(user.profilePicture)}
             </Link>
+            {/* <div>You</div> */}
             </div>
             </div>
         </div>

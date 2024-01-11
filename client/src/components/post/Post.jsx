@@ -10,6 +10,7 @@ export default function Post({ post }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
+  const [isDeleteVisible, setisDeleteVisible] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
   const [user, setUser] = useState({});
@@ -40,6 +41,22 @@ export default function Post({ post }) {
     setIsLiked(!isLiked);
   };
 
+  const handleDeletePost=async()=>{
+    try {
+      await axios.delete(`https://socialtea-backend.onrender.com/api/posts/delete/${post._id}`,
+      {
+      data: { userId: currentUser._id }
+      })
+      window.location.reload();
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
+  }
+
+  const handleMoreVertIcon=async()=>{
+    setisDeleteVisible(!isDeleteVisible)
+  }
+
   let imgSource = PF + 'avatar.jpg';
 
   return (
@@ -57,8 +74,16 @@ export default function Post({ post }) {
               <span className="postDate">{format(post.createdAt)}</span>
             </Link>
           </div>
-          <div className="postTopRight">
+          <div className="postTopRight" style={{marginRight:"20px",cursor:"pointer"}} onClick={handleMoreVertIcon}>
             <MoreVertIcon />
+
+            {/* Delete only your posts */}
+          {isDeleteVisible && post.userId===currentUser._id &&
+           <div 
+          style={{position:"absolute",backgroundColor:"red",color:"white",padding:"0.2rem"}}
+          onClick={handleDeletePost}
+          >
+            Delete</div>}
           </div>
         </div>
         <div className="postCenter">
