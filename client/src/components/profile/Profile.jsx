@@ -16,7 +16,7 @@ export default function Profile() {
 
     useEffect(() => {
       const getuser = async () => {
-        const res = await axios.get(`https://socialtea-backend.onrender.com/api/users/getuser?username=${username}`)
+        const res = await axios.get(process.env.REACT_APP_BACKEND+`/api/users/getuser?username=${username}`)
         setUser(res.data)
       }
        getuser();

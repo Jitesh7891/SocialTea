@@ -49,7 +49,7 @@ export default function Share() {
       newPost.image = fileName;
 
       try{
-        await axios.post("https://socialtea-backend.onrender.com/api/upload",data);
+        await axios.post(process.env.REACT_APP_BACKEND+"/api/upload",data);
         // await axios.post("https://localhost:8800/api/upload",data);
       }catch(err){
         //console.log(err)
@@ -57,7 +57,7 @@ export default function Share() {
 
     }
     try{
-      axios.post("https://socialtea-backend.onrender.com/api/posts/add",newPost)
+      axios.post(process.env.REACT_APP_BACKEND+"/api/posts/add",newPost)
       window.location.reload();
     }catch(err){
       console.log(err)
@@ -105,7 +105,7 @@ export default function Share() {
             <div className="shareOptionText"><span className="shareOptiontext">Location</span></div>
           </div>
           <div className="shareOption">
-            <EmojiEmotionsIcon style={{ color: 'goldenrod' }} className='shareIcon' />
+            <EmojiEmotionsIcon onClick={handleEmojiButtonClick}   style={{ color: 'goldenrod' }} className='shareIcon' />
             <div className="shareOptionText" onClick={handleEmojiButtonClick}><span className="shareOptiontext">Emotions
             </span></div>
             {isEmojiPickerVisible && (

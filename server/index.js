@@ -18,20 +18,20 @@ app.listen(port, () => {
 
 //middleware
 app.use(express.json())
-app.use(morgan("common"))
+// app.use(morgan("common"))
 
 //serve static files
 app.use("/images",express.static(path.join(__dirname,"public/images")));
 
-const corsOptions = {
-    origin: ['https://social-tea.vercel.app','https://socialtea.onrender.com'],
-    methods: 'GET,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
-    optionsSuccessStatus: 200,
-  };
+// const corsOptions = {
+//     origin: ['https://social-tea.vercel.app','https://socialtea.onrender.com'],
+//     methods: 'GET,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
+//     optionsSuccessStatus: 200,
+//   };
 
-  app.use(cors(corsOptions));
+//   app.use(cors(corsOptions));
 
-
+app.use(cors())
 async function connectToMongoose() {
     await mongoose.connect(`${process.env.MONGO_URL}`, { useNewUrlParser: true });
     console.log('connected to mongoose')
@@ -42,6 +42,8 @@ connectToMongoose();
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/users', require('./routes/users'))
 app.use('/api/posts', require('./routes/posts'))
+app.use('/api/conversation', require('./routes/conversations'))
+app.use('/api/message', require('./routes/message'))
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

@@ -48,7 +48,7 @@ const Topbar = () => {
             <div className="topbarCenter">
                 <div className="searchbar">
                     <SearchIcon className='searchIcon'/>
-                    <input type="text" placeholder="Search for friend , post or video " className="searchInput" />
+                    <input type="text" placeholder="Search " className="searchInput" />
                 </div>
 
             </div>
@@ -77,7 +77,7 @@ const Topbar = () => {
                     </div>
                     <div>
                     </div>
-                        <button onClick={handleLogout} style={{backgroundColor:'red',color:'white',fontSize:'1.1rem',cursor:'pointer',marginLeft:'1rem'}}>
+                        <button className="topbarLogout" onClick={handleLogout}  >
                             Logout
                         </button>
                 </div>
@@ -88,7 +88,6 @@ const Topbar = () => {
                 src={(user.profilePicture!==undefined||user.profilePicture!=="")?
                     PF+user.profilePicture:PF+"avatar.jpg"}
                      alt="" className='topbarImage' />
-                     {console.log(user.profilePicture)}
             </Link>
             {/* <div>You</div> */}
             </div>

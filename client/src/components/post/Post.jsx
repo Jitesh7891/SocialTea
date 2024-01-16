@@ -22,7 +22,7 @@ export default function Post({ post }) {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get(`https://socialtea-backend.onrender.com/api/users/getuser?userId=${post.userId}`);
+        const res = await axios.get(process.env.REACT_APP_BACKEND+`/api/users/getuser?userId=${post.userId}`);
         setUser(res.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -33,7 +33,7 @@ export default function Post({ post }) {
 
   const handleLikeButton = async () => {
     try {
-      await axios.put(`https://socialtea-backend.onrender.com/api/posts/like/${post._id}`, { userId: currentUser._id });
+      await axios.put(process.env.REACT_APP_BACKEND+`/api/posts/like/${post._id}`, { userId: currentUser._id });
     } catch (error) {
       console.error('Error liking post:', error);
     }
@@ -43,7 +43,7 @@ export default function Post({ post }) {
 
   const handleDeletePost=async()=>{
     try {
-      await axios.delete(`https://socialtea-backend.onrender.com/api/posts/delete/${post._id}`,
+      await axios.delete(process.env.REACT_APP_BACKEND+`/api/posts/delete/${post._id}`,
       {
       data: { userId: currentUser._id }
       })

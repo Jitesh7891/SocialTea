@@ -5,7 +5,7 @@ export const loginCall = async (userCredential, dispatch) => {
     dispatch({ type: "LOGIN_START" });
 
     try {
-        const res = await axios.post("https://socialtea-backend.onrender.com/api/auth/login", userCredential)
+        const res = await axios.post(process.env.REACT_APP_BACKEND+"/api/auth/login", userCredential)
 
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
 

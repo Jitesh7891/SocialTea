@@ -20,7 +20,7 @@ export default function Rightbar({ user }) {
     const getFriends = async () => {
       try {
         // console.log(currentUser)
-        const friendList = await axios.get("https://socialtea-backend.onrender.com/api/users/friends/" + currentUser._id);
+        const friendList = await axios.get(process.env.REACT_APP_BACKEND+"/api/users/friends/" + currentUser._id);
         setFriends(friendList.data);
       } catch (err) {
         // console.log(err);
@@ -32,12 +32,12 @@ export default function Rightbar({ user }) {
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put(`https://socialtea-backend.onrender.com/api/users/unfollow/${user._id}`, {
+        await axios.put(process.env.REACT_APP_BACKEND+`/api/users/unfollow/${user._id}`, {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`https://socialtea-backend.onrender.com/api/users/follow/${user._id}`, {
+        await axios.put(process.env.REACT_APP_BACKEND+`/api/users/follow/${user._id}`, {
           userId: currentUser._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });

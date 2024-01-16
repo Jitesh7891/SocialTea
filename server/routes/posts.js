@@ -13,7 +13,6 @@ router.post("/add", async (req, res) => {
         return res.status(500).json({ error });
     }
 })
-module.exports = router
 
 //update a post
 
@@ -96,9 +95,9 @@ router.get('/timeline/:userId', async (req, res) => {
         const currentuser = await User.findById(req.params.userId);
         if(!currentuser)return res.json('User doesnt exist')
         const userPosts = await Post.find({ userId: currentuser._id });
-        const friendPosts = await Promise.all(currentuser.following.map((friendId)=>{
-            return Post.find({userId:friendId});
-        })
+    const friendPosts = await Promise.all(currentuser.following.map((friendId)=>{
+        return Post.find({userId:friendId});
+    })
         );
         res.status(200).json(userPosts.concat(...friendPosts));
     }
@@ -114,12 +113,13 @@ router.get('/profile/:username', async (req, res) => {
     try {
         const user=await User.findOne({username:req.params.username});
         if(!user)res.status(404).json('User not found!');
-       const posts=await Post.find({userId:user._id})
-       res.status(200).send(posts);
+        const posts=await Post.find({userId:user._id})
+        res.status(200).send(posts);
     }
     catch (error) {
         return res.status(500).json({ error })
     }
 })
 
+module.exports = router
 

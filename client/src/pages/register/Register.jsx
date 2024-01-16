@@ -15,6 +15,12 @@ export default function Register() {
 
     const navigate=useNavigate();
 
+    useEffect(()=>{
+        if(localStorage.getItem("user")){
+            navigate("/")
+        }
+    },[localStorage.getItem("user")])
+
     const handleLogin=()=>{
         navigate("/login")
     }
@@ -30,7 +36,7 @@ export default function Register() {
                 password:password.current.value,
             }
             try{
-            await axios.post("https://socialtea-backend.onrender.com/api/auth/register",user);
+            await axios.post(process.env.REACT_APP_BACKEND+"/api/auth/register",user);
             navigate("/")
             }catch(error){
                 setError(true)

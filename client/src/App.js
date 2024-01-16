@@ -8,6 +8,7 @@ const Home = lazy(() => import('./pages/home/Home'));
 const Profile = lazy(() => import('./components/profile/Profile'));
 const Login = lazy(() => import('./pages/login/Login'));
 const Register = lazy(() => import('./pages/register/Register'));
+const Messenger = lazy(() => import('./pages/messenger/Messenger'));
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -28,6 +29,11 @@ function App() {
               exact
               path="/profile/:username"
               element={<Profile />}
+            ></Route>
+            <Route
+              exact
+              path="/messenger"
+              element={!user ? <Login /> : <Messenger></Messenger>}
             ></Route>
           </Routes>
         </Suspense>
