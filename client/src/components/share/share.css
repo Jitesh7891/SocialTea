@@ -73,12 +73,17 @@ display: flex;
     border: none;
     padding: 10px;
     border-radius: 6px;
-    background-color: rgb(13, 136, 13);
+    background-color: rgb(28, 180, 28);
     margin-right: 20px;
     margin-left: 260px;
     cursor: pointer;
     color: white;
+    
+}
 
+.shareButton:hover{
+    
+    background-color: rgb(13, 136, 13);
 }
 
 .shareImgContainer{

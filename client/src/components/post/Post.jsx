@@ -66,6 +66,7 @@ export default function Post({ post }) {
           <div className="postTopLeft">
             <Link to={`/profile/${user.username}`}>
               <img
+              loading="lazy"
                 src={user.profilePicture ? PF + user.profilePicture : imgSource}
                 alt=""
                 className="postProfileImg"
@@ -88,11 +89,12 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <span className="postText">{post.desc}</span>
-          <img className="postImg" src={PF + post.image} alt="" />
+          <img loading="lazy" className="postImg" src={PF + post.image} alt="" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
             <img
+            loading="lazy"
               onClick={handleLikeButton}
               className="likeIcon"
               src={PF + 'like.png'}

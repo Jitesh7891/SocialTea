@@ -7,8 +7,14 @@ import Conversation from '../../components/conversations/Conversation'
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext"
 import axios from "axios"
+import { io } from "socket.io-client"
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import EmojiPicker from 'emoji-picker-react';
 
 const Messenger = () => {
+
+    
+    const socket = useRef();
     const { user } = useContext(AuthContext)
     //first fetch all conversations
     const [conversations, setConversations] = useState([]);
@@ -22,7 +28,28 @@ const Messenger = () => {
     //new message initialised as empty string
     const [newMessage, setNewMessage] = useState("");
 
+    const [arrivalMessage, setArrivalMessage] = useState(null);
+    const [onlineUsers, setOnlineUsers] = useState([]);
+
     const scrollRef = useRef();
+    //so that it only runs once
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900")
+        socket.current.on("getMessage", (data) => {
+            setArrivalMessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt: Date.now()
+            })
+        })
+    }, [])
+
+    useEffect(() => {
+        arrivalMessage &&
+            currentChat?.members.includes(arrivalMessage.sender) &&
+            setMessages((prev) => [...prev, arrivalMessage]);
+    }, [arrivalMessage, currentChat]);
+
     useEffect(() => {
         const getConversations = async () => {
             try {
@@ -40,7 +67,7 @@ const Messenger = () => {
         const getMessages = async () => {
             try {
                 const res = await axios.get(process.env.REACT_APP_BACKEND + "/api/message/" + currentChat?._id);
-                setMessages(res.data.messages);
+                setMessages(res.data);
             } catch (err) {
                 console.log(err);
             }
@@ -49,35 +76,60 @@ const Messenger = () => {
     }, [currentChat]);
 
     useEffect(() => {
-        scrollRef.current?.scrollIntoView({behavior:"smooth"});
-      }, [messages]);
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
 
 
-    //submit new message
+
+    useEffect(() => {
+        socket.current.emit("addUser", user._id);
+        socket.current.on("getUsers", users => {
+            setOnlineUsers(users)
+            console.log(users)
+        })
+    }, [user])
+
+
     const handleSubmit = async (e) => {
 
-        e.preventDefault();
-
-        //no need to send empty message
         if (newMessage === "") return;
+        e.preventDefault();
+        const message = {
+            sender: user._id,
+            text: newMessage,
+            conversationId: currentChat._id,
+        };
+
+        const receiverId = currentChat.members.find(
+            (member) => member !== user._id
+        );
+
+        socket.current.emit("sendMessage", {
+            senderId: user._id,
+            receiverId,
+            text: newMessage,
+        });
 
         try {
-            const message = {
-                conversationId: currentChat._id,
-                sender: user._id,
-                text: newMessage
-            }
-
-            setNewMessage("")
-            const sentMessage = await axios.post(process.env.REACT_APP_BACKEND + "/api/message", message)
-
-            setMessages([...messages, message])
-
-            console.log(sentMessage)
-        } catch (error) {
-            console.log(error.message)
+            setNewMessage("");
+            const res = await axios.post(process.env.REACT_APP_BACKEND + "/api/message", message);
+            setMessages([...messages, res.data]);
+        } catch (err) {
+            console.log(err);
         }
-    }
+    };
+
+    //for emojis 
+    const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
+
+    const handleEmojiButtonClick = () => {
+        setEmojiPickerVisible(!isEmojiPickerVisible);
+    };
+
+    const handleEmojiSelect = (emoji) => {
+        // Handle the selected emoji, if needed
+        console.log('Selected Emoji:', emoji);
+    };
 
     return (
         <>
@@ -102,9 +154,9 @@ const Messenger = () => {
 
                                     {messages.map(function (m) {
                                         return (
-                                        <div ref={scrollRef}>
-                                        <Message key={m._id} message={m} own={m.sender === user._id} />
-                                        </div>
+                                            <div ref={scrollRef}>
+                                                <Message key={m._id} message={m} own={m.sender === user._id} />
+                                            </div>
                                         )
                                     })}
 
@@ -112,6 +164,19 @@ const Messenger = () => {
 
 
                                 <div className="chatBoxBottom">
+                                <EmojiEmotionsIcon onClick={handleEmojiButtonClick}   style={{ color: '#ffcc00' }} className='shareIcon' />
+                                    {isEmojiPickerVisible && (
+                                        <div style={{ position: "absolute"}}>
+                                            <EmojiPicker
+                                                onSelect={handleEmojiSelect}
+                                                categories={['smileys_people', 'food_drink', 'travel_places', 'activities']}
+                                                style={{ maxHeight: "340px", height: "60vh", minWidth: "150px", width: '20vw', position: 'absolute', bottom: "-10vh",right:"0" }}
+                                            onEmojiClick={(emojiObject)=>{setNewMessage(newMessage+emojiObject.emoji)}}
+
+                                            />
+                                        </div>
+                                    )}
+
                                     <textarea
                                         className='chatMessageInput'
                                         placeholder='Write Something...'
@@ -125,7 +190,11 @@ const Messenger = () => {
                 </div>
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        <ChatOnline />
+                        <ChatOnline
+                            onlineUsers={onlineUsers}
+                            currentId={user._id}
+                            setCurrentChat={setCurrentChat}
+                        />
                     </div>
                 </div>
             </div>

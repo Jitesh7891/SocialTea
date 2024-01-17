@@ -54,13 +54,14 @@ const Topbar = () => {
             </div>
             <div className="topbarRight">
                 <div className="topbarLinks">
+                    <span> <Link className="topbarLink" to="/messenger" >
+                            Messenger
+                        </Link></span>
                         <span >
                     <Link className="topbarLink" to="/" >
                             Homepage
                         </Link> 
                             </span> 
-                    {/* TODO - Implement Them */}
-                    {/* <span className="topbarLink">Timeline</span> */}
                 </div>
                 <div className="topbarIcons">
                     <div className="topbarIconItem">
@@ -85,7 +86,7 @@ const Topbar = () => {
             <div>
             <Link to={`/profile/${user.username}`}>
                 <img 
-                src={(user.profilePicture!==undefined||user.profilePicture!=="")?
+                src={(user.profilePicture!==undefined&&user.profilePicture!=="")?
                     PF+user.profilePicture:PF+"avatar.jpg"}
                      alt="" className='topbarImage' />
             </Link>

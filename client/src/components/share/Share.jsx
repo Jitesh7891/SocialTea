@@ -105,15 +105,15 @@ export default function Share() {
             <div className="shareOptionText"><span className="shareOptiontext">Location</span></div>
           </div>
           <div className="shareOption">
-            <EmojiEmotionsIcon onClick={handleEmojiButtonClick}   style={{ color: 'goldenrod' }} className='shareIcon' />
-            <div className="shareOptionText" onClick={handleEmojiButtonClick}><span className="shareOptiontext">Emotions
+            <EmojiEmotionsIcon onClick={handleEmojiButtonClick}   style={{ color: '#ffcc00' }} className='shareIcon' />
+            <div className="shareOptionText" onClick={handleEmojiButtonClick}><span className="shareOptiontext">Emojis
             </span></div>
             {isEmojiPickerVisible && (
               <div style={{position:"absolute"}}>
             <EmojiPicker 
             onSelect={handleEmojiSelect} 
-            categories={['smileys_people','food_drink','travel_places']}
-            style={{height:"60vh",width:'20vw',position:'absolute',top:"2vh"}}
+            categories={['smileys_people','food_drink','travel_places','activities','animals_nature']}
+            style={{maxHeight:"340px",height:"60vh",minWidth:"150px",width:'20vw',position:'absolute',top:"2vh"}}
             onEmojiClick={(emojiObject)=>{desc.current.value=desc.current.value+emojiObject.emoji
 
             }}

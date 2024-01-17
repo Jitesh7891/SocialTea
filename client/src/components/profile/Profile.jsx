@@ -22,7 +22,6 @@ export default function Profile() {
        getuser();
     },[username])
     
-    // console.log(user)
     return (
         <div>
             <>

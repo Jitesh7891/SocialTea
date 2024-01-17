@@ -18,6 +18,7 @@ app.listen(port, () => {
 
 //middleware
 app.use(express.json())
+app.use(helmet())
 // app.use(morgan("common"))
 
 //serve static files
