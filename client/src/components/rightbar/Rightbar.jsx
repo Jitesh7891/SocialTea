@@ -33,7 +33,7 @@ export default function Rightbar({ user }) {
     setFollowed(
       user&&currentUser.following&&currentUser.following.includes(user?._id)?true:false
     );
-  
+  comm
   })
 
   const handleClick = async () => {
