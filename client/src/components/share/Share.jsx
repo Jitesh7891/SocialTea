@@ -17,11 +17,6 @@ export default function Share() {
     setEmojiPickerVisible(!isEmojiPickerVisible);
   };
 
-  const handleEmojiSelect = (emoji) => {
-    // Handle the selected emoji, if needed
-    console.log('Selected Emoji:', emoji);
-  };
-
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -106,7 +101,6 @@ export default function Share() {
               {isEmojiPickerVisible && (
                 <div style={{ position: "absolute" }}>
                   <EmojiPicker
-                    onSelect={handleEmojiSelect}
                     categories={['smileys_people', 'food_drink', 'travel_places', 'activities', 'animals_nature']}
                     style={{ maxHeight: "340px", height: "60vh", minWidth: "150px", width: '20vw', position: 'absolute', top: "2vh" }}
                     onEmojiClick={(emojiObject) => {

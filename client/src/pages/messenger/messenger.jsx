@@ -158,8 +158,6 @@ const Messenger = () => {
                                     })}
 
                                 </div>
-
-
                                 <div className="chatBoxBottom">
                                     <EmojiEmotionsIcon onClick={handleEmojiButtonClick} style={{ color: '#ffcc00' }} className='shareIcon' />
                                     {isEmojiPickerVisible && (
