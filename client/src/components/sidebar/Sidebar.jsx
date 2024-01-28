@@ -7,11 +7,10 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import EventIcon from '@mui/icons-material/Event';
-import{Users} from '../../dummyData'
 import Friend from '../friend/Friend';
 
 export default function Sidebar() {
-  let Users2=Users.filter((u)=>{return u.id!==1})
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -52,9 +51,6 @@ export default function Sidebar() {
         <button className="sidebarButton">Show More</button>
         <hr className='sidebarHr'/>
         <ul className="sidebarFriendList">
-        {Users2.map(u=>(
-        <Friend key={u.id}  user={u}/>
-       ))}
         </ul>
         </div>
         </div>

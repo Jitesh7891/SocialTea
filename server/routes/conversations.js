@@ -4,11 +4,13 @@ const Conversation = require('../models/Conversation')
 
 //Create new converstaion
 router.post("/",async(req,res)=>{
-    const conversation=await Conversation.find({
-        members:{$in:[req.body.senderId,req.body.receiverId]}
-    });
-    //check if they already exits
-    if(conversation)return res.status(403).json({message:"You Already have a conversation "})
+    const sortedMemberIds = [req.body.senderId, req.body.receiverId].sort();
+    
+    // Search for conversation with sorted member IDs
+    const conversation = await Conversation.find({
+        members: { $all: sortedMemberIds }
+    })
+    if(conversation.length>0)return res.status(403).json({message:"You Already have a conversation ",conversation})
     const newConversation=new Conversation({
         members:[req.body.senderId,req.body.receiverId],
     })

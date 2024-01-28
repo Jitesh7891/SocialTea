@@ -17,14 +17,10 @@ const ChatOnline = ({onlineUsers,currentId,setCurrentChat}) => {
   }, [currentId]);
 
   useEffect(() => {
-    setOnlineFriends(friends.filter((f) => 
-    onlineUsers.some((onlineUser) => onlineUser.userId === f._id)
-     ));
+    setOnlineFriends(friends.filter((f) => onlineUsers.includes(f._id)));
   }, [friends, onlineUsers]);
 
-  useEffect(()=>{
-    console.log("Online: ",onlineFriends)
-  },[onlineFriends])
+
 
   const handleClick = async (user) => {
     try {

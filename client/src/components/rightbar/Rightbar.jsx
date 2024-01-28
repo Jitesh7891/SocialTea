@@ -12,10 +12,10 @@ export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(
-    user&&currentUser.following&&currentUser.following.includes(user?._id)?true:false
-  );
-console.log(currentUser.following)
+  const [followed, setFollowed] = useState(false);
+//     console.log(followed)
+//     console.log(user._id)
+// console.log(currentUser.following)
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -28,6 +28,13 @@ console.log(currentUser.following)
     };
     getFriends();
   }, [user]);
+
+  useEffect(()=>{
+    setFollowed(
+      user&&currentUser.following&&currentUser.following.includes(user?._id)?true:false
+    );
+  
+  })
 
   const handleClick = async () => {
     try {
@@ -57,7 +64,7 @@ console.log(currentUser.following)
           </span>
         </div>
         <img loading="lazy" className="rightbarAd" src="assets/ad.png" alt="" />
-        <h4 className="rightbarTitle">Online Friends</h4>
+        <h4 className="rightbarTitle">Contacts</h4>
         <ul className="rightbarFriendList">
           {Users.map((u) => (
             <Online key={u.id} user={u} />
@@ -70,8 +77,9 @@ console.log(currentUser.following)
   const ProfileRightbar = () => {
     return (
       <>
-        {user.username !== currentUser.username && (
+        {user.username !== currentUser.username&& (
           <button className="rightbarFollowButton" onClick={handleClick} >
+            {console.log(followed)}
             {followed ? "Unfollow" : "Follow"}
             {followed ? <Remove /> : <Add />}
           </button>

@@ -39,7 +39,12 @@ align-items: center;
 .rightbarFriend{
     display: flex;
     align-items: center;
-    margin-bottom: 15px;;
+    margin-bottom: 15px;
+}
+
+.rightbarFriend:hover{
+    cursor: pointer;
+    background-color: rgb(206, 206, 206);
 }
 
 .rightbarProfileImgContainer{
@@ -73,9 +78,8 @@ align-items: center;
     
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 10px;
-    /* margin-left: -3px; */
-    margin-left: 21px;
+    margin-bottom: 20px;
+    align-self: center;
 }
 .rightbarTitle2{
     

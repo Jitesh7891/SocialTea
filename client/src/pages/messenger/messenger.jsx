@@ -13,7 +13,7 @@ import EmojiPicker from 'emoji-picker-react';
 
 const Messenger = () => {
 
-    
+
     const socket = useRef();
     const { user } = useContext(AuthContext)
     //first fetch all conversations
@@ -32,9 +32,11 @@ const Messenger = () => {
     const [onlineUsers, setOnlineUsers] = useState([]);
 
     const scrollRef = useRef();
+
     //so that it only runs once
     useEffect(() => {
-        socket.current = io("ws://localhost:8900")
+        socket.current = io("wss://socialtea-socket.onrender.com")
+        // socket.current = io("ws://localhost:8900.com")
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
                 sender: data.senderId,
@@ -80,15 +82,14 @@ const Messenger = () => {
     }, [messages]);
 
 
-
     useEffect(() => {
         socket.current.emit("addUser", user._id);
-        socket.current.on("getUsers", users => {
-            setOnlineUsers(users)
-            console.log(users)
-        })
-    }, [user])
-
+        socket.current.on("getUsers", (users) => {
+          setOnlineUsers(
+            user.following.filter((f) => users.some((u) => u.userId === f))
+          );
+        });
+      });
 
     const handleSubmit = async (e) => {
 
@@ -126,11 +127,6 @@ const Messenger = () => {
         setEmojiPickerVisible(!isEmojiPickerVisible);
     };
 
-    const handleEmojiSelect = (emoji) => {
-        // Handle the selected emoji, if needed
-        console.log('Selected Emoji:', emoji);
-    };
-
     return (
         <>
             <Topbar />
@@ -140,7 +136,7 @@ const Messenger = () => {
                         <input placeholder="Search for friends" className="chatMenuInput" />
                         {conversations.map((conv) => (
                             <div onClick={() => setCurrentChat(conv)}>
-                                <Conversation conv={conv} currentUser={user} />
+                                <Conversation conv={conv} currentUser={user} currentChat={currentChat}/>
                             </div>
                         ))}
                     </div>
@@ -155,7 +151,8 @@ const Messenger = () => {
                                     {messages.map(function (m) {
                                         return (
                                             <div ref={scrollRef}>
-                                                <Message key={m._id} message={m} own={m.sender === user._id} />
+                                                <Message key={m._id} message={m} own={m.sender === user._id}
+                                                    currentId={user._id} currentChat={currentChat} />
                                             </div>
                                         )
                                     })}
@@ -164,14 +161,13 @@ const Messenger = () => {
 
 
                                 <div className="chatBoxBottom">
-                                <EmojiEmotionsIcon onClick={handleEmojiButtonClick}   style={{ color: '#ffcc00' }} className='shareIcon' />
+                                    <EmojiEmotionsIcon onClick={handleEmojiButtonClick} style={{ color: '#ffcc00' }} className='shareIcon' />
                                     {isEmojiPickerVisible && (
-                                        <div style={{ position: "absolute"}}>
+                                        <div style={{ position: "absolute" }}>
                                             <EmojiPicker
-                                                onSelect={handleEmojiSelect}
                                                 categories={['smileys_people', 'food_drink', 'travel_places', 'activities']}
-                                                style={{ maxHeight: "340px", height: "60vh", minWidth: "150px", width: '20vw', position: 'absolute', bottom: "-10vh",right:"0" }}
-                                            onEmojiClick={(emojiObject)=>{setNewMessage(newMessage+emojiObject.emoji)}}
+                                                style={{ maxHeight: "340px", height: "60vh", minWidth: "150px", width: '20vw', position: 'absolute', bottom: "-10vh", right: "0" }}
+                                                onEmojiClick={(emojiObject) => { setNewMessage(newMessage + emojiObject.emoji) }}
 
                                             />
                                         </div>
@@ -190,11 +186,11 @@ const Messenger = () => {
                 </div>
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        <ChatOnline
+                       { onlineUsers&&<ChatOnline
                             onlineUsers={onlineUsers}
                             currentId={user._id}
                             setCurrentChat={setCurrentChat}
-                        />
+                        />}
                     </div>
                 </div>
             </div>

@@ -4,8 +4,20 @@
     padding: 10px;
     cursor: pointer;
     margin-top: 20px;
-    /* background-color: red; */
+
   }
+
+.conversation-active {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: rgb(216, 211, 211);
+
+  }
+
+
   
   .conversation:hover {
     background-color: rgb(245, 243, 243);

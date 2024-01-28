@@ -48,13 +48,11 @@ align-items: center;
 
 .shareOptions{
 display: flex;
-
 }
 
 .shareOption{
     display: flex;
     align-items: center;
-    margin-right: 15px;
     margin-left: 15px;
     cursor: pointer;
 }
@@ -65,7 +63,7 @@ display: flex;
 }
 
 .shareOptionText{
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 

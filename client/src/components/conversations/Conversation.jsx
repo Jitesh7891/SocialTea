@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./conversation.css"
 import axios from 'axios';
 
-const Conversation = ({ conv, currentUser }) => {
+const Conversation = ({ conv, currentUser,currentChat }) => {
 
   const [user, setUser] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -25,7 +25,7 @@ const Conversation = ({ conv, currentUser }) => {
 
   return (
 
-    <div className="conversation">
+    <div className={conv===currentChat?"conversation-active":"conversation"}>
       <img
         className="conversationImg"
         src={
