@@ -33,10 +33,10 @@ export default function Login() {
        const response=loginCall({ email: email.current.value, password: password.current.value }, dispatch);
 
        response.then(data => {
-        //console.log(data); // This will log the resolved value when the promise is fulfilled
+        
       }).catch(error => {
         console.error(error); // This will log any errors that occur during the promise execution
-      });//console.log(response)
+      });
         
     }
 
