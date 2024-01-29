@@ -30,9 +30,18 @@
     top: 2px;
     right: 2px;
   }
-  
-  @media screen and (max-width: 768px) {
-    .chatOnlineName {
-      display: none;
+
+  .noOnlineText{
+    position: absolute;
+    top: 13%;
+    font-size: 1.8rem;
+    color: rgb(224, 220, 220);
+    cursor: default;
+  }
+
+  @media screen and (max-width:500px) {
+    .noOnlineText{
+      font-size: 1rem;
     }
   }
+  

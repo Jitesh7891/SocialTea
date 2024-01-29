@@ -1,95 +1,103 @@
-.sidebar{
-    flex:3;
+.sidebar {
+    flex: 3;
     /* 8vh is height of topbar */
     height: calc(100vh - 8vh);
-    font-size: 12px;
+    font-size: 0.8rem;
     overflow-y: scroll;
     position: sticky;
-    top:8vh;
+    overflow-x: hidden;
 }
 
-.sidebarListItemText{
-font-weight: 600!important;
+.sidebarListItemText {
+    font-weight: 600 !important;
 }
 
-.sidebarFriendName{
-    font-weight: 600!important;
+.sidebarFriendName {
+    font-weight: 600 !important;
 
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 8px;
 }
-::-webkit-scrollbar-track{
-background-color: white;
+
+::-webkit-scrollbar-track {
+    background-color: white;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background-color: rgb(158, 157, 157);
 
 }
 
-.sidebarWrapper{
+.sidebarWrapper {
     padding: 20px;
     /* background-color: rgb(247, 147, 147); */
 }
 
-.sidebarList{
+.sidebarList {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-.sidebarListItem{
+.sidebarListItem {
     margin-left: -10px;
     padding: 1.4rem 0;
     display: flex;
     align-items: center;
 }
 
-.sidebarListItem:hover{
-    background-color: rgb(187, 187, 187);
+.sidebarListItem:hover {
+    background: radial-gradient(circle, rgba(211, 211, 211, 0.2) 20%, rgba(211, 211, 211, 0.4) 40%, rgba(211, 211, 211, 0.6) 60%, rgba(211, 211, 211, 0.8) 80%, rgba(211, 211, 211, 1) 100%);
     cursor: pointer;
 }
 
-.sidebarIcon{
+.sidebarIcon {
     margin-right: 1.3rem;
 }
 
-.sidebarButton{
-    width:9rem;
-    border:none;
-    border-radius:5px;
-    padding:10px;
+.sidebarButton {
+    width: 9rem;
+    border: none;
+    border-radius: 5px;
+    padding: 0.6rem;
     font-weight: 500;
     margin-top: 1rem;
 }
 
-.sidebarButton:hover{
+.sidebarButton:hover {
     background-color: rgb(170, 169, 169);
     cursor: pointer;
 }
 
-.sidebarHr{
+.sidebarHr {
     margin: 1.5rem 0;
 }
 
-.sidebarFriendList{
+.sidebarFriendList {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-.sidebarFriend{
+.sidebarFriend {
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
 }
 
-.sidebarFriendImg{
+.sidebarFriendImg {
     width: 3.3rem;
     height: 3.3rem;
     object-fit: cover;
     border-radius: 50%;
     margin-right: 0.8rem;
-    
+
+}
+
+@media screen and (max-width:800px) {
+    .sidebarButton {
+        max-width: 14vw;
+    }
 }
