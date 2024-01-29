@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const helmet = require('helmet');
 const morgan = require('morgan');
 const multer = require('multer');
 const path=require ("path")
@@ -18,7 +17,6 @@ app.listen(port, () => {
 
 //middleware
 app.use(express.json())
-app.use(helmet())
 app.use(morgan("common"))
 
 //serve static files
@@ -32,7 +30,6 @@ const corsOptions = {
 
   app.use(cors(corsOptions));
 
-// app.use(cors())
 async function connectToMongoose() {
     await mongoose.connect(`${process.env.MONGO_URL}`, { useNewUrlParser: true });
     console.log('connected to mongoose')
