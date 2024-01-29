@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const helmet = require('helmet');
 const morgan = require('morgan');
 const multer = require('multer');
 const path=require ("path")
@@ -18,16 +17,6 @@ app.listen(port, () => {
 
 //middleware
 app.use(express.json())
-app.use(
-    helmet({
-      contentSecurityPolicy: false, // Disable CSP
-      frameguard: {
-        action: 'sameorigin' // Adjust X-Frame-Options to allow framing from the same origin
-      },
-      referrerPolicy: { policy: 'same-origin' } // Set Referrer-Policy to only send referrer information for requests from the same origin
-      // You can enable/disable or adjust other headers as needed
-    })
-  );
 app.use(morgan("common"))
 
 //serve static files
