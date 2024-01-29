@@ -19,20 +19,20 @@ app.listen(port, () => {
 //middleware
 app.use(express.json())
 app.use(helmet())
-// app.use(morgan("common"))
+app.use(morgan("common"))
 
 //serve static files
 app.use("/images",express.static(path.join(__dirname,"public/images")));
 
-// const corsOptions = {
-//     origin: ['https://social-tea.vercel.app','https://socialtea.onrender.com'],
-//     methods: 'GET,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
-//     optionsSuccessStatus: 200,
-//   };
+const corsOptions = {
+    origin: ['https://social-tea.vercel.app','https://socialtea.onrender.com'],
+    methods: 'GET,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
+    optionsSuccessStatus: 200,
+  };
 
-//   app.use(cors(corsOptions));
+  app.use(cors(corsOptions));
 
-app.use(cors())
+// app.use(cors())
 async function connectToMongoose() {
     await mongoose.connect(`${process.env.MONGO_URL}`, { useNewUrlParser: true });
     console.log('connected to mongoose')
