@@ -10,7 +10,7 @@
   
   .chatMenuInput {
     width: 90%;
-    padding: 1rem 0;
+    padding: 10px 0;
     border: none;
     border-bottom: 1px solid gray;
     margin-top: 10px;
@@ -83,15 +83,26 @@
   .noConversationText {
     position: absolute;
     top: 10%;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: rgb(224, 220, 220);
     cursor: default;
   }
-
-  @media screen and (max-width:500px) {
-    .noConversationText{
-      font-size: 1rem;
+  
+  @media screen and (max-width: 768px) {
+    .chatMenu {
+      flex: 1;
+    }
+  
+    .chatMenuInput {
+      display: none;
+    }
+  
+    .chatBox{
+      flex: 10;
+    }
+  
+    .chatOnline{
+      flex: 1px;
     }
   }
-  
-  
+

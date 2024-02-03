@@ -9,6 +9,7 @@
     position: sticky;
     top:0;
     margin-top: -10px;
+    margin-left: -10px;
     z-index: 2;
 }
 
@@ -100,7 +101,7 @@
 .searchInput{
     border: none;
     width:88%;
-    font-size: 0.8rem;
+    font-size: 15px;;
 }
 .searchInput:focus{
     outline: none;
@@ -119,8 +120,47 @@
 }
 
 
-@media screen and (max-width: 900px){
-        
+@media screen and (max-width: 1000px){
+    .topbarContainer{
+        height: 8vh;
+        max-height: 50px;
+        width: 100vw;
+        background-color: #a020f0;
+        display: flex;
+        /* align-items: center; */
+        justify-content: space-around;
+        position: sticky;
+        top:0;
+        margin-top: -10px;
+        margin-left: -10px;
+        z-index: 2;
+    }
+    
+    /* Topbar left right and center */
+    .topbarLeft{
+        flex:2.5;
+    }
+    .topbarCenter{
+        flex:5;
+    }
+    .topbarRight{
+        flex:4;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        color:white;
+    }
+    
+    /* TopbarLink */
+    .topbarLink{
+        margin-right: 10px;
+        font-size: 0.7rem;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+    }
+    
+    
     /* topbar image */
     .topbarImage{
         width: 1.7rem;
@@ -131,53 +171,72 @@
     
     /* logo */
     .logo {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        color: white;
+        margin-left: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    /* topbar icons */
+    .topbarIcons{
+        display:flex;
+    }
+    
+    .topbarIconItem{
+        margin-right: 15px;
+        cursor:pointer;
+        position:relative;
+        font-size: 0.2rem !important;
     }
     
     .topbarIconBadge{
         height: 10x;
         width: 10px;
+        background-color: red;
+        border-radius: 50%;
+        color: white;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
     }
     
+    
+    
+    /* search */
+    .searchbar{
+        width:100%;
+        /* max-width: 170px; */
+        max-height: 1.1rem;
+        max-height: 1rem;
+        background-color: white;
+        border-radius: 25;
+        display:flex;
+        align-items: center;
+        border-radius: 30px;
+    }
     .searchIcon{
-        font-size: 0.8rem !important;
+        font-size: 0.5rem !important;
+        margin-left: 10px;;
     }
-    
-    .topbarCenter{
-        max-width: 45vw;
+    .searchInput{
+        border: none;
+        width:88%;
+        font-size: 8px;
     }
-
+    .searchInput:focus{
+        outline: none;
+    }
     .topbarLogout {
-        margin-right: 9px;
+        background-color: red;
+        color: white;
         font-size: 0.6rem;
+        cursor: pointer;
         margin-left: 0.2rem;
 
-    }
-    .topbarLink{
-        font-size: 0.8rem;
-    }
-}
-
-@media screen and (max-width:650px){
-    .logo{
-        font-size: 0.8rem;
-        margin-left: 2px;
-    }
-    .topbarCenter{
-        margin-right: 10px;
-        /* max-width: 30vw; */
-        /* max-height: 2.1vh; */
-    }
-    
-    .topbarLinks{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .topbarIconItem{
-        margin-right: 5px;
-    }
-    .topbarIconBadge{
-        right: 0;
     }
 }

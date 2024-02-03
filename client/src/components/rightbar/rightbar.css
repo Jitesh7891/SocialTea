@@ -19,15 +19,15 @@ align-items: center;
 
 .birthdayText{
     font-weight: 200;
-    font-size: 0.9rem;
+    font-size: 17px;
 }
 
 .rightbarAd{
     width: 100%;
     border-radius: 12px;
-    height: 10rem;
-    margin: 1rem 0 0 0;
-    /* object-fit: cover; */
+    height: 150px;
+    margin: 30px 0;
+    object-fit: cover;
 }
 
 
@@ -72,12 +72,11 @@ align-items: center;
 
 .rightbarUsername{
     font-weight: 400;
-    font-size: 0.9rem;
 }
 
 .rightbarTitle{
     
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 20px;
     align-self: center;
