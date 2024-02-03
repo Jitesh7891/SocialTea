@@ -1,4 +1,4 @@
-import React ,{useContext, useEffect} from 'react'
+import React ,{useContext, useEffect, useState} from 'react'
 import './home.css'
 import Topbar from '../../components/topbar/Topbar'
 import Sidebar from '../../components/sidebar/Sidebar'
@@ -11,6 +11,12 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
   const user=localStorage.getItem("user");
   const navigate = useNavigate()
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+      setIsMobile(window.screen.width < 450)
+  },[window.screen.width])
 
   //If no user present redirect to login page
   useEffect(()=>{
@@ -26,7 +32,7 @@ const Home = () => {
         <div className="homeContainer">
           <Sidebar />
           <Feed />
-         { user &&
+         { user && !isMobile &&
          <Rightbar />
          }
         </div>

@@ -15,7 +15,7 @@
 .shareTop {
     display: flex;
     align-items: center;
-
+    box-sizing: border-box;
 }
 
 .shareProfileImg {
@@ -123,4 +123,15 @@
     .shareInput{
         font-size: 0.7rem;
     }
+}
+
+@media screen and (max-width:450px){
+   .shareTop{
+    flex-direction: column;
+    justify-content: space-between;
+   }
+   .shareInput{
+    margin-top: 10px;
+    font-size: 0.6rem;
+   }
 }

@@ -76,18 +76,17 @@ align-items: center;
 }
 
 .rightbarTitle{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-left: 25%;
+}
+.rightbarTitle2{
     
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 20px;
-    align-self: center;
-}
-.rightbarTitle2{
-    
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    margin-left: 62px;
+    margin-left: 35%;
 }
 
 .rightbarFollowingImg{
@@ -132,8 +131,16 @@ align-items: center;
 }
 
 .rightbarFollowingName{
-    font-size: 14px;
+    font-size:1rem;
     text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    text-decoration: none;
 }
 
 .rightbarFollowButton{
@@ -154,6 +161,16 @@ align-items: center;
     background-color: #1b67d1;
 }
 
-rightbarFollowButton:focus{
+.rightbarFollowButton:focus{
     outline: none;
+}
+
+@media screen and (max-width:500px){
+    .rightbarFollowingImg{
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    .rightbarFollowingName{
+        font-size: 0.8rem;
+    }
 }

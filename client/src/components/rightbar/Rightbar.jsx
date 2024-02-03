@@ -102,7 +102,7 @@ export default function Rightbar({ user }) {
             </span>
           </div>
         </div>
-        <h4 className="rightbarTitle">User friends</h4>
+        <h4 className="rightbarTitle2">User friends</h4>
         {user.username === currentUser.username && 
          <div className="rightbarFollowings">
           {friends.map((friend) => (

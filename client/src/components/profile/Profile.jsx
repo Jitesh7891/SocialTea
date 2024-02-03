@@ -14,6 +14,13 @@ export default function Profile() {
     const[user,setUser]=useState({});
     const username=useParams().username;
 
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        setIsMobile(window.screen.width < 450)
+    },[window.screen.width])
+  
+
     useEffect(() => {
       const getuser = async () => {
         const res = await axios.get(process.env.REACT_APP_BACKEND+`/api/users/getuser?username=${username}`)
@@ -40,9 +47,12 @@ export default function Profile() {
                                 <h4 className="profileInfoDesc">{user.description}</h4>
                             </div>
                         </div>
+                        <div>
+                            {isMobile&&<Rightbar user={user}/>}
+                        </div>
                         <div className="profileRightBottom">
                             <Feed username={username}/>
-                            <Rightbar user={user} />
+                            {!isMobile&&<Rightbar user={user} />}
                         </div>
                     </div>
                 </div>

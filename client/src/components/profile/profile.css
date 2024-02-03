@@ -1,5 +1,7 @@
 .profile{
     display: flex;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .profileRight{
@@ -13,13 +15,13 @@
 
 .profileCoverImg{
     width: 100%;
-    height: 250px;
+    height: 16rem;
     object-fit: cover;
 }
 
 .profileUserImg{
-    width: 150px;
-    height: 150px;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     object-fit: cover;
     position: absolute;

@@ -31,7 +31,7 @@
 }
 
 .sidebarWrapper {
-    padding: 20px;
+    padding: 1rem;
     /* background-color: rgb(247, 147, 147); */
 }
 
@@ -98,6 +98,22 @@
 
 @media screen and (max-width:800px) {
     .sidebarButton {
-        max-width: 14vw;
+        max-width: 40%;
+    }
+    .sidebarIcon{
+        margin-right: 0.3rem;
+    }
+    .sidebarListItem{
+        padding: 0.7rem 0;
+    }
+    .sidebarList{
+        font-size: 0.6rem;
+
+    }
+}
+
+@media screen and (max-width:500px){
+    .sidebar{
+        flex: 0;
     }
 }
