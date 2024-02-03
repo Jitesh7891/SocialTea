@@ -34,13 +34,34 @@
     font-weight: 500;
   }
 
+  .chatOnlineBadge {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: limegreen;
+    border: 1px solid white;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
+
   @media screen and (max-width:500px) {
+    
     .conversationName{
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
     .conversationImg{
-      width: 2rem;
-      height: 2rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 7px;
+    }
+    .conversation{
+      margin-left: -10px;
+      padding: 0 2px ;
+    }
+    .conversation-active{
+      margin-left: -10px;
+      padding: 0 2px ;
     }
   }
   

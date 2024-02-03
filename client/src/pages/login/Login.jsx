@@ -7,11 +7,6 @@ import { loginCall } from '../../apiCalls'
 export default function Login() {
 
     const navigate = useNavigate();
-    useEffect(()=>{
-        if(localStorage.getItem("user")){
-            navigate("/")
-        }
-    },[localStorage.getItem("user")])
 
     const email = useRef();
     const password = useRef();
@@ -41,12 +36,12 @@ export default function Login() {
     }
 
     const handleRegister = (e) => {
+        e.preventDefault()
         e.stopPropagation()
         navigate("/register")
     }
 
     
-
     return (
         <div className='login'>
             <div className="loginWrapper">

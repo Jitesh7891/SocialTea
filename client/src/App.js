@@ -1,5 +1,5 @@
 import React, { useContext, lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes,Navigate } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
 import "./index.css"
 
@@ -15,30 +15,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="container">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={user ? <Home /> : <Login></Login>}
-            ></Route>
-            <Route exact path="/login" element={<Login />}></Route>
-            <Route exact path="/register" element={<Register />}></Route>
-            <Route
-              exact
-              path="/profile/:username"
-              element={<Profile />}
-            ></Route>
-            <Route
-              exact
-              path="/messenger"
-              element={!user ? <Login /> : <Messenger></Messenger>}
-            ></Route>
-          </Routes>
-        </Suspense>
-      </div>
-    </BrowserRouter>
+    <div className="container">
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+          <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+          <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
+          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/messenger" element={user ? <Messenger /> : <Navigate to="/login" />} />
+        </Routes>
+      </Suspense>
+    </div>
+  </BrowserRouter>
   );
 }
 

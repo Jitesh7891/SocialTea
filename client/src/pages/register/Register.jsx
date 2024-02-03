@@ -15,12 +15,6 @@ export default function Register() {
 
     const navigate=useNavigate();
 
-    useEffect(()=>{
-        if(localStorage.getItem("user")){
-            navigate("/")
-        }
-    },[localStorage.getItem("user")])
-
     const handleLogin=()=>{
         navigate("/login")
     }
@@ -56,8 +50,8 @@ export default function Register() {
         <div className='login'>
             <div className="loginWrapper">
                 <div className="loginLeft">
-                    <h3 className="loginLogo">SocialTea</h3>
-                    <span className="logindesc">Connect with your friends with SocialTea </span>
+                    <h3 className="registerLogo">SocialTea</h3>
+                    <span className="registerdesc">Connect with your friends with SocialTea </span>
                 </div>
                 <div className="loginRight">
 
@@ -97,7 +91,7 @@ export default function Register() {
                 {error&&<div className='registerError'>Sorry , user with this email already exists</div>}
                         <button className="loginButton" type='submit'>Sign Up</button>
 
-                        <button className="loginregisterButton" onClick={handleLogin}>Login </button>
+                        <button className="registerButton" onClick={handleLogin}>Login </button>
                     </form>
                 </div>
             </div>

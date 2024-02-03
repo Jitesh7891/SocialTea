@@ -20,18 +20,19 @@
     justify-content: center;
 }
 
-.loginLogo{
-    font-size: 70px;
+.registerLogo {
+    color: #9932cc;
+    font-size: 4rem;
     font-weight: 800;
-    color: #8a2be2;
     margin-bottom: 10px;
 
 }
 
-.logindesc{
-    font-size: 25px;
+.registerdesc {
+    font-size: 1.3rem;
     font-weight: 500;
 }
+
 
 .registerBox{
     height: 85%;
@@ -70,7 +71,7 @@
 }
 
 
-.loginregisterButton{
+.registerButton{
 width: 60%;
 /* margin: 0px auto; */ /* or */ align-self: center;
 height: 50px;
@@ -93,4 +94,26 @@ margin-top: 1vh;
     font-size: 1.2rem;
     position: relative;
     top: 2vh;
+}
+
+@media screen and (max-width:500px){
+    .loginWrapper{
+        height: 100%;
+        flex-direction: column;
+        top:-20;
+        align-items: start;
+    }
+    .registerBox{
+        min-height: 400px;
+        margin-bottom: 5px;
+    }
+    .loginButton{
+        margin: 0;
+    }
+    .registerLogo{
+        margin-top: -10px;
+    }
+    .registerdesc{
+        margin-top: -10px;
+    }
 }

@@ -25,7 +25,6 @@
     border-radius: 50%;
     background-color: limegreen;
     border: 1px solid white;
-    
     position: absolute;
     top: 2px;
     right: 2px;
@@ -40,8 +39,18 @@
   }
 
   @media screen and (max-width:500px) {
+    
+    .chatOnlineFriend{
+      font-size: 0.7rem;
+      flex-direction: column;
+    }
     .noOnlineText{
       font-size: 1rem;
     }
+    .chatOnlineImg{
+      height: 2rem;
+      width: 2rem;
+    }
+    
   }
   

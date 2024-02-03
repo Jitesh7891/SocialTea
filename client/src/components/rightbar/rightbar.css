@@ -26,8 +26,6 @@ align-items: center;
     width: 100%;
     border-radius: 12px;
     height: 10rem;
-    margin: 1rem 0 0 0;
-    /* object-fit: cover; */
 }
 
 
@@ -145,8 +143,22 @@ a:visited{
 
 .rightbarFollowButton{
     margin: 30px;
+    margin-left: 50px;
     border: none;
     background-color: #1872f2;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 16px;
+}
+.rightbarConversationButton{
+    margin: 30px;
+    border: none;
+    background-color: rgb(18, 194, 18);
     color: white;
     border-radius: 5px;
     padding: 5px 10px;

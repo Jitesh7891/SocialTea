@@ -60,13 +60,8 @@ export default function Rightbar({ user }) {
             <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
           </span>
         </div>
+          <h4 className="rightbarTitle">Sponsored</h4>
         <img loading="lazy" className="rightbarAd" src="assets/ad.png" alt="" />
-        <h4 className="rightbarTitle">Contacts</h4>
-        <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} user={u} />
-          ))}
-        </ul>
       </>
     );
   };

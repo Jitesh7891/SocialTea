@@ -2,6 +2,7 @@
     /* height of topbar is 8vh */
     height: calc(100vh - 8vh);
     display: flex;
+    overflow-x: hidden;
   }
   
   .chatMenu {
@@ -88,9 +89,18 @@
     cursor: default;
   }
 
-  @media screen and (max-width:500px) {
+  @media screen and (max-width:450px) {
     .noConversationText{
       font-size: 1rem;
+    }
+    .chatMenuInput{
+      font-size: 0.6rem;
+    }
+    .chatOnline{
+      max-width: 18vw;
+    }
+    .chatMenuInput{
+      margin-left: -10px;
     }
   }
   

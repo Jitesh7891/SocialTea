@@ -16,7 +16,7 @@ const Topbar = () => {
     const [isExpanded, setIsExpanded] = useState(false)
 
     useEffect(() => {
-        setIsMobile(window.screen.width < 430)
+        setIsMobile(window.screen.width < 450)
     }, [window.screen.width])
 
     const changeExpanded = () => {
@@ -110,7 +110,7 @@ const Topbar = () => {
                     <MenuIcon onClick={changeExpanded}
                         className='menuIcon' />
                         {isExpanded&&
-                            <div style={{position:"absolute",backgroundColor:"white",height:"100vh"}}>
+                            <div style={{position:"absolute",backgroundColor:"white",height:"100vh",marginTop:"3vh"}}>
                             <Sidebar/>
                             </div>
                         }

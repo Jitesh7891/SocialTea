@@ -13,6 +13,11 @@ import EmojiPicker from 'emoji-picker-react';
 
 const Messenger = () => {
 
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        setIsMobile(window.screen.width < 450)
+    }, [window.screen.width])
 
     const socket = useRef();
     const { user } = useContext(AuthContext)
@@ -85,11 +90,11 @@ const Messenger = () => {
     useEffect(() => {
         socket.current.emit("addUser", user._id);
         socket.current.on("getUsers", (users) => {
-          setOnlineUsers(
-            user.following.filter((f) => users.some((u) => u.userId === f))
-          );
+            setOnlineUsers(
+                user.following.filter((f) => users.some((u) => u.userId === f))
+            );
         });
-      });
+    });
 
     const handleSubmit = async (e) => {
 
@@ -136,7 +141,10 @@ const Messenger = () => {
                         <input placeholder="Search for friends" className="chatMenuInput" />
                         {conversations.map((conv) => (
                             <div onClick={() => setCurrentChat(conv)}>
-                                <Conversation conv={conv} currentUser={user} currentChat={currentChat}/>
+                                <Conversation
+                                 conv={conv} currentUser={user} currentChat={currentChat} onlineUsers={onlineUsers}
+                            currentId={user._id}
+                            setCurrentChat={setCurrentChat}/>
                             </div>
                         ))}
                     </div>
@@ -182,9 +190,9 @@ const Messenger = () => {
                             </>) : (<span className='noConversationText'>You have to open a conversation to start a chat</span>)}
                     </div>
                 </div>
-                <div className="chatOnline">
+                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                       { onlineUsers&&<ChatOnline
+                        {onlineUsers && <ChatOnline
                             onlineUsers={onlineUsers}
                             currentId={user._id}
                             setCurrentChat={setCurrentChat}

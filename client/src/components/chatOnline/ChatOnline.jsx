@@ -48,7 +48,7 @@ const ChatOnline = ({ onlineUsers, currentId, setCurrentChat }) => {
                 : PF + "/avatar.jpg"} alt=""></img>
             <div className="chatOnlineBadge"></div>
           </div>
-          <span className="chatOnlineName">{online_friend.username} </span>
+          <div className="chatOnlineName">{online_friend.username} </div>
         </div>
       ))}
     </div>)
