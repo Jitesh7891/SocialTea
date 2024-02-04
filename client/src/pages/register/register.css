@@ -113,10 +113,6 @@ margin-top: 1vh;
         align-items: flex-start;
         justify-content: center;
     }
-    .loginLeft{
-        max-width: 60vw;
-
-       }
     .registerBox{
         min-height: 420px;
         margin-top:2vh;

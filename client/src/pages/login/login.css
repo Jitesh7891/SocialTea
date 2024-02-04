@@ -107,10 +107,6 @@
         align-items: flex-start;
         justify-content: center;
     }
-   .loginLeft{
-    max-width: 60vw;
-
-   }
     .loginButton{
         margin:0
     }
