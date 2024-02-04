@@ -12,7 +12,6 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import EmojiPicker from 'emoji-picker-react';
 
 const Messenger = () => {
-
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
@@ -37,7 +36,6 @@ const Messenger = () => {
     const [onlineUsers, setOnlineUsers] = useState([]);
 
     const scrollRef = useRef();
-
     //so that it only runs once
     useEffect(() => {
         socket.current = io("wss://socialtea-socket.onrender.com")
@@ -52,12 +50,14 @@ const Messenger = () => {
     }, [])
 
     useEffect(() => {
+   
         arrivalMessage &&
             currentChat?.members.includes(arrivalMessage.sender) &&
             setMessages((prev) => [...prev, arrivalMessage]);
     }, [arrivalMessage, currentChat]);
 
     useEffect(() => {
+
         const getConversations = async () => {
             try {
                 const res = await axios.get(process.env.REACT_APP_BACKEND + `/api/conversation/${user._id}`)
@@ -68,9 +68,10 @@ const Messenger = () => {
             }
         }
         getConversations();
-    }, [user])
+    }, [user._id])
 
     useEffect(() => {
+
         const getMessages = async () => {
             try {
                 const res = await axios.get(process.env.REACT_APP_BACKEND + "/api/message/" + currentChat?._id);
@@ -83,18 +84,22 @@ const Messenger = () => {
     }, [currentChat]);
 
     useEffect(() => {
+     
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
 
     useEffect(() => {
+     
         socket.current.emit("addUser", user._id);
         socket.current.on("getUsers", (users) => {
+            
             setOnlineUsers(
                 user.following.filter((f) => users.some((u) => u.userId === f))
             );
         });
-    });
+        socket.current.emit("userdisconnect")
+    },[user]);
 
     const handleSubmit = async (e) => {
 
@@ -131,7 +136,6 @@ const Messenger = () => {
     const handleEmojiButtonClick = () => {
         setEmojiPickerVisible(!isEmojiPickerVisible);
     };
-
     return (
         <>
             <Topbar />
@@ -158,7 +162,7 @@ const Messenger = () => {
 
                                     {messages.map(function (m) {
                                         return (
-                                            <div ref={scrollRef}>
+                                            <div key={m._id} ref={scrollRef}>
                                                 <Message key={m._id} message={m} own={m.sender === user._id}
                                                     currentId={user._id} currentChat={currentChat} />
                                             </div>
@@ -172,7 +176,7 @@ const Messenger = () => {
                                         <div style={{ position: "absolute" }}>
                                             <EmojiPicker
                                                 categories={['smileys_people', 'food_drink', 'travel_places', 'activities']}
-                                                style={{ maxHeight: "340px", height: "60vh", minWidth: "150px", width: '20vw', position: 'absolute', bottom: "-10vh", right: "0" }}
+                                                style={{ maxHeight: "340px", height: "60vh", minWidth: "120px", width: '23vw', position: 'absolute', bottom: "-10vh", right: "-1vw" }}
                                                 onEmojiClick={(emojiObject) => { setNewMessage(newMessage + emojiObject.emoji) }}
 
                                             />

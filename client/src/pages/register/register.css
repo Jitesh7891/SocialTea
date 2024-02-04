@@ -105,15 +105,17 @@ margin-top: 1vh;
     }
     .registerBox{
         min-height: 400px;
-        margin-bottom: 5px;
+        margin-bottom: 0.8rem;
     }
     .loginButton{
         margin: 0;
     }
     .registerLogo{
+        margin-left: -1rem;
         margin-top: -10px;
     }
     .registerdesc{
+        font-size: 0.9rem;
         margin-top: -10px;
     }
 }

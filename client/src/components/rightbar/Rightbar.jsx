@@ -55,13 +55,13 @@ export default function Rightbar({ user }) {
     return (
       <>
         <div className="birthdayContainer">
-          <img loading="lazy" className="birthdayImg" src="assets/gift.png" alt="" />
+          <img loading="lazy" className="birthdayImg" src={PF+"gift.png"} alt="" />
           <span className="birthdayText">
             <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
           </span>
         </div>
-          <h4 className="rightbarTitle">Sponsored</h4>
-        <img loading="lazy" className="rightbarAd" src="assets/ad.png" alt="" />
+          <h4 className="rightbarTitle2">Sponsored</h4>
+        <img loading="lazy" className="rightbarAd" src={PF+"ad.jpeg"} alt="" />
       </>
     );
   };

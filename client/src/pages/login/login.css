@@ -104,13 +104,15 @@
     }
     .loginBox{
         min-height: 350px;
-        margin-bottom: 5px;
+        margin-bottom: 1.7rem;
     }
     .loginLogo{
+        margin-left: -1rem;
         margin-top: -15px;
     }    
     .logindesc{
         margin-top: -15px;
+        font-size: 0.9rem;
     }
     .loginregisterButton{
         width: 100%;
