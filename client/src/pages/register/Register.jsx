@@ -61,7 +61,7 @@ export default function Register() {
                             placeholder="Username"
                             required
                             ref={username}
-                            className="loginInput">
+                            className="registerInput">
                         </input>
 
                         <input
@@ -69,7 +69,7 @@ export default function Register() {
                             required
                             type="email"
                             ref={email}
-                            className="loginInput">
+                            className="registerInput">
                         </input>
 
                         <input
@@ -78,7 +78,7 @@ export default function Register() {
                             minLength={5}
                             required
                             ref={password}
-                            className="loginInput">
+                            className="registerInput">
                         </input>
 
                         <input
@@ -86,7 +86,7 @@ export default function Register() {
                             ref={confirmpassword}
                             type="password"
                             minLength={5}
-                            className="loginInput">
+                            className="registerInput">
                         </input>
                 {error&&<div className='registerError'>Sorry , user with this email already exists</div>}
                         <button className="loginButton" type='submit'>Sign Up</button>

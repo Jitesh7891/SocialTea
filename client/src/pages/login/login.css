@@ -90,29 +90,37 @@
 }
 
 @media screen and (max-width:500px){
-    .loginWrapper{
-        height: 100%;
+    .login{      
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .loginWrapper{   
         flex-direction: column;
-        top:-20
+        align-items: flex-start;
+        padding: 0;
+        justify-content: space-around;
+        min-height: 500px;
+        
     }
-    .loginLeft{
-        flex: 1;
+    .loginLeft,.loginRight{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
-   
+   .loginLeft{
+    max-width: 60vw;
+    margin-left: 7vw;
+   }
     .loginButton{
         margin:0
     }
     .loginBox{
-        min-height: 350px;
-        margin-bottom: 1.7rem;
-    }
-    .loginLogo{
-        margin-left: -1rem;
-        margin-top: -15px;
-    }    
+        margin-top: 2vh;
+        min-height: 355px;
+    } 
     .logindesc{
-        margin-top: -15px;
         font-size: 0.9rem;
+        
     }
     .loginregisterButton{
         width: 100%;

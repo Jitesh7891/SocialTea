@@ -45,8 +45,8 @@
     justify-content: space-between;
 }
 
-.loginInput{
-    height: 50px;
+.registerInput{
+    height: 48px;
     border-radius: 8px;
     border: 1px solid grey;
     font-size: 15px;
@@ -66,7 +66,7 @@
     font-weight: 600;
     cursor: pointer;
     color: white;
-    margin-top: 4vh;
+    margin-top: 5vh;
     
 }
 
@@ -97,15 +97,30 @@ margin-top: 1vh;
 }
 
 @media screen and (max-width:500px){
-    .loginWrapper{
-        height: 100%;
-        flex-direction: column;
-        top:-20;
-        align-items: start;
+    .login{
+        align-items: flex-start;
+        justify-content: center;
     }
+    .loginWrapper{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        justify-content: space-around;
+        min-height: 600px;
+    }
+    .loginLeft,.loginRight{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .loginLeft{
+        max-width: 60vw;
+        margin-left: 7vw;
+       }
     .registerBox{
-        min-height: 400px;
-        margin-bottom: 0.8rem;
+        min-height: 420px;
+        margin-top:2vh;
+        min-width: 65vw;
     }
     .loginButton{
         margin: 0;
@@ -116,6 +131,5 @@ margin-top: 1vh;
     }
     .registerdesc{
         font-size: 0.9rem;
-        margin-top: -10px;
     }
 }
