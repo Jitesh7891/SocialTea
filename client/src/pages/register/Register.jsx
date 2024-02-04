@@ -49,11 +49,11 @@ export default function Register() {
     return (
         <div className='login'>
             <div className="loginWrapper">
-                <div className="loginLeft">
+                <div className="registerLeft">
                     <h3 className="registerLogo">SocialTea</h3>
                     <span className="registerdesc">Connect with your friends with SocialTea </span>
                 </div>
-                <div className="loginRight">
+                <div className="registerRight">
 
                     <form className="registerBox" onSubmit={handleSubmit}>
 
