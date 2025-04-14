@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
   //generate salt and secured password
   const salt = await bcrypt.genSalt(10);
   const secPass = await bcrypt.hash(req.body.password, salt);
-  const user = await new User({
+  const user = new User({
     username: req.body.username,
     email: req.body.email,
     password: secPass,
@@ -21,6 +21,8 @@ router.post('/register', async (req, res) => {
     if (usercheck) {
       return res.status(400).json({ error: "Sorry a user with this email already exists" })
     }
+
+    //in case unique names needed
     // let usercheck2 = await User.findOne({ username: req.body.username });
     // if (usercheck2) {
     //   return res.status(400).json({ error: "Sorry a user with this name already exists" })

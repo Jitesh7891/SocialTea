@@ -37,8 +37,6 @@ router.put("/update/:id", async (req, res) => {
 router.delete("/delete/:id", async (req, res) => {
   if (req.body.userId == req.params.id || req.body.isAdmin) {
 
-    //if user wants to change password generate it again
-    if (req.body.password) {
       try {
         const user=await User.findByIdAndDelete(req.params.id);
         return res.status(200).json({user,msg:"Account has been deleted"});
@@ -46,10 +44,6 @@ router.delete("/delete/:id", async (req, res) => {
         console.log(error);
         return res.status(500).json({ error });
       }
-    }
-    else {
-      return res.status(403).json("You can delete only your account");
-    }
 
   }
 })
@@ -129,24 +123,25 @@ router.put("/unfollow/:id", async (req, res) => {
     }
   })
 
-  //get friends
-  router.get("/friends/:userId",async(req,res)=>{
-    try{
-      const user=await User.findById(req.params.userId);
-      const friends=await Promise.all(
-      user.following.map((frinedId)=>{
-       return User.findById(frinedId);
-      }) 
-      );
-      let friendList=[];
-      friends.map(friend=>{
-        const {_id,username,profilePicture}=friend;
-        friendList.push({_id,username,profilePicture});
+  //get friends(followers)
+  router.get("/friends/:userId", async (req, res) => {
+    try {
+      const user = await User.findById(req.params.userId);
+      const friends = await User.find({
+        _id: { $in: user.following },
       });
+  
+      const friendList = friends.map(({ _id, username, profilePicture }) => ({
+        _id,
+        username,
+        profilePicture,
+      }));
+  
       res.status(200).json(friendList);
-    }catch(err){
+    } catch (err) {
       res.status(500).json(err);
     }
-  })
+  });
+  
 
 module.exports = router

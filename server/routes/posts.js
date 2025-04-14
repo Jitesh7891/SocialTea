@@ -71,6 +71,7 @@ router.get('/get/:id', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         if (!post) return res.status(404).json("Post not found")
+        // hide createdAt and updatedAt 
         const { createdAt, updatedAt, ...other } = post._doc;
         return res.status(200).json(other)
     } catch (error) {
@@ -78,7 +79,7 @@ router.get('/get/:id', async (req, res) => {
     }
 })
 
-// Get all user posts
+// Get all users' posts
 router.get('/all', async (req, res) => {
     try {
         const posts = await Post.find();

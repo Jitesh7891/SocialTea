@@ -23,7 +23,7 @@ app.use(morgan("common"))
 app.use("/images",express.static(path.join(__dirname,"public/images")));
 
 const corsOptions = {
-    origin: ['https://social-tea.vercel.app','https://socialtea.onrender.com'],
+    origin: ['https://social-tea.vercel.app','https://socialtea.onrender.com','http://localhost:3000'],
     methods: 'GET,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
     optionsSuccessStatus: 200,
   };
@@ -43,8 +43,10 @@ app.use('/api/posts', require('./routes/posts'))
 app.use('/api/conversation', require('./routes/conversations'))
 app.use('/api/message', require('./routes/message'))
 
+//configure storgae and filename
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        //calback(error,value)
         cb(null, "public/images")
     },
     filename: (req, file, cb) => {
@@ -52,7 +54,10 @@ const storage = multer.diskStorage({
     }
 })
 
+//middleware to upload
 const upload = multer({storage});
+
+//api to upload isngle file 
 app.post("/api/upload", upload.single("file"), (req, res) => {
     try {
         return res.status(200).json("file uploaded Successfully")
