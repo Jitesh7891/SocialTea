@@ -102,7 +102,9 @@ const Messenger = () => {
                 user.following.filter((f) => users.some((u) => u.userId === f))
             );
         });
-        socket.current.emit("userdisconnect")
+        return()=>{
+            socket.current.emit("userdisconnect")
+        }
     },[user]);
 
     const handleSubmit = async (e) => {
