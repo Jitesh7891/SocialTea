@@ -1,7 +1,6 @@
 import Post from '../post/Post'
 import Share from '../share/Share'
 import './feed.css'
-import {Posts} from '../../dummyData.js'
 import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
