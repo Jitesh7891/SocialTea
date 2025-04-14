@@ -7,7 +7,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { LogOut } from '../../context/AuthActions';
 import Sidebar from '../sidebar/Sidebar';
 
 const Topbar = () => {
@@ -39,9 +38,6 @@ const Topbar = () => {
 
                 // Dispatch LOGOUT action to update the state
                 dispatch({ type: "LOGOUT" });
-
-                // Additional logout actions if needed (e.g., clearing user data)
-                LogOut();
 
                 // Navigate to the login page
                 navigate("/login");

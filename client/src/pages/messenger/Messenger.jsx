@@ -38,16 +38,20 @@ const Messenger = () => {
     const scrollRef = useRef();
     //so that it only runs once
     useEffect(() => {
-        socket.current = io("wss://socialtea-socket.onrender.com")
-        // socket.current = io("ws://localhost:8900.com")
+        socket.current = io("wss://socialtea-socket.onrender.com");
+    
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
                 sender: data.senderId,
                 text: data.text,
                 createdAt: Date.now()
-            })
-        })
-    }, [])
+            });
+        });
+    
+        return () => {
+            socket.current.disconnect(); // Clean up socket connection on unmount
+        };
+    }, []);
 
     useEffect(() => {
    

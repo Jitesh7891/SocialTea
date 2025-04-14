@@ -28,14 +28,18 @@ const AuthReducer=(state,action)=>{
                 error:action.payload,
             };
 
-        case "FOLLOW":
-            return{
-                ...state,
-                user:{
-                    ...state.user,
-                    following:[...state.user.following,action.payload],
-                }
-            };
+       case "FOLLOW":
+  return {
+    ...state, // This copies the current state object. The spread operator (`...state`) creates a new object with all the properties of the existing state.
+    user: {
+      ...state.user, // This copies the current user object from the state, ensuring that existing properties of the user are not lost or overwritten.
+      following: [
+        ...state.user.following, // This copies the current `following` array of the user, preserving any users that are already being followed.
+        action.payload, // This adds the `action.payload`, which is the user ID of the person the current user wants to follow, to the end of the `following` array.
+      ],
+    },
+  };
+
         case "UNFOLLOW":
             return{
                 ...state,

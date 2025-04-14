@@ -3,7 +3,6 @@ import './register.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
-// import { set } from 'mongoose';
 
 export default function Register() {
     const username = useRef();
