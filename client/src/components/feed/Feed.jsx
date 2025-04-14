@@ -5,12 +5,12 @@ import {Posts} from '../../dummyData.js'
 import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 
 export default function Feed({username}) {
   
-    const location = useLocation();
+  const location = useLocation();
   
   const[posts,setPosts]=useState([]);
   const {user}=useContext(AuthContext);
@@ -23,7 +23,7 @@ export default function Feed({username}) {
       res=await axios.get(process.env.REACT_APP_BACKEND+"/api/posts/all")
     }
     else{
-      res=username?await axios.get(process.env.REACT_APP_BACKEND+"/api/posts/profile/"+username):await axios.get(process.env.REACT_APP_BACKEND+"/api/posts/timeline/"+user._id)
+      res=user.username!==username?await axios.get(process.env.REACT_APP_BACKEND+"/api/posts/profile/"+username):await axios.get(process.env.REACT_APP_BACKEND+"/api/posts/timeline/"+user._id)
     }
 
     setPosts(res.data.sort((p1,p2)=>{
