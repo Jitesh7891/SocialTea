@@ -52,6 +52,13 @@ cd server && npm run dev
 cd socket && npm start
 ```
 
+## Note :- Make .env file in frontend and add 
+- REACT_APP_PUBLIC_FOLDER="http://127.0.0.1:8800/images/"  
+- REACT_APP_BACKEND="http://localhost:8800"
+
+## Note :- Make .env file in backend and add 
+- MONGO_URL=YOUR_MONGO_URL
+
 ## Technologies Used
 - **React** – Frontend framework for interactive user interfaces
 - **Express.js** – Backend framework for API and server logic
