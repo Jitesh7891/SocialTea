@@ -19,7 +19,6 @@ Social Tea is a full-stack social media application that brings people together 
 - User Profiles – View and manage personal profiles and others' profiles
 - Follow System – Follow and unfollow other users to build your network
 - Real-time Chat – Instant messaging with online users using Socket.io
-- JWT Authentication – Secure token-based user sessions
 - Responsive Design – Seamless experience across all devices
 - Online Status – See who's currently active for real-time interactions
 
